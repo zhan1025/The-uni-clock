@@ -3,9 +3,9 @@
 		<view class="status_bar">
 		          <!-- 这里是状态栏 -->
 		      </view>
-		<view :class="pre?'preView':'all'" >
-			<text class="time">{{hours}}<text class="dot" :id="dot?'black':'none'">:</text>{{minutes}}.<text class="seconds">{{seconds}}</text></text>
+		<view :class="pre?'preView':'all'">
 			<image :class="pre?'preLogo':'logo'" src="/static/cat.gif" @click="noPre"></image>
+			<text class="time" v-show="hours">{{hours}}<text class="dot" >:</text>{{minutes}}.<text class="seconds">{{seconds}}</text></text>
 		</view>
 		<button type="primary" plain="true"  @click="all">全屏</button>
 	</view>
@@ -13,7 +13,7 @@
 
 <script>
 	export default {
-		data() {
+		data() {	
 			return {
 				timer:'',
 				nowTime:'',
@@ -31,10 +31,8 @@
 			this.clear()
 		},
 		onLoad() {
-
 		},
 		onPullDownRefresh() {
-		        console.log('refresh');
 		        setTimeout(function () {
 		            uni.stopPullDownRefresh();
 		        }, 1000);
@@ -42,20 +40,23 @@
 		methods: {
 			noPre(){
 				this.pre = true
+				plus.navigator.setFullscreen(false);
+				plus.screen.unlockOrientation();
 			},
 			all(){	
 				uni.setKeepScreenOn({
 					success:(res)=>{console.log(res)},
 				    keepScreenOn: true
 				});
+				plus.navigator.setFullscreen(true);
+				plus.screen.lockOrientation("landscape");
 				this.pre = false
-				
 			},
 			clear(){
 				clearInterval(this.timer)
 			},
 			pad(params){
-				if(params<9){
+				if(params<=9){
 					return '0'+params
 				} else{
 					return params
@@ -98,6 +99,14 @@
 		font-size: 100rpx;
 		color: #dbdb2a;
 	}
+	#black{
+		color: #000;
+	}
+	.time{
+		color: #fff;
+		bottom: 0;
+	}
+	
 	.all{
 		position: absolute;
 		width: 100%;
@@ -106,15 +115,9 @@
 		font-size: 100px;
 		background: #000;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	#black{
-		color: #000;
-	}
-	.time{
-		color: #fff;
-		bottom: 0;
+		align-items: flex-end;
+		justify-content: space-around;
+		font-size: 300rpx;
 	}
 	.preView{
 		height: 200px;
@@ -137,16 +140,18 @@
 		border-radius: 50%;
 		top: 0;
 		right: 0;
-		height: 200rpx;
-		width: 200rpx;
+		height: 100rpx;
+		width: 100rpx;
+		z-index: 0;
 	}
-	.logo {
+	.logo {			
 		position: absolute;
-		border-radius: 50%;
 		top: 0;
-		right: 0;
-		height: 500rpx;
-		width: 500rpx;
+		right: 5rpx;
+		border-radius: 50%;
+		height: 150rpx;
+		width: 150rpx;
+		border: 1px dashed #fff;
 	}
 
 	.text-area {

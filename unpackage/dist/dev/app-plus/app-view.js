@@ -218,37 +218,45 @@ var render = function() {
         "v-uni-view",
         { class: _vm._$g(2, "c"), attrs: { _i: 2 } },
         [
-          _c(
-            "v-uni-text",
-            { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
-            [
-              _vm._v(_vm._$g(3, "t0")),
-              _c(
-                "v-uni-text",
-                {
-                  staticClass: _vm._$g(4, "sc"),
-                  attrs: { id: _vm._$g(4, "a-id"), _i: 4 }
-                },
-                [_vm._v(":")]
-              ),
-              _vm._v(_vm._$g(3, "t0") + "."),
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
-                [_vm._v(_vm._$g(5, "t0"))]
-              )
-            ],
-            1
-          ),
           _c("v-uni-image", {
-            class: _vm._$g(6, "c"),
-            attrs: { src: "/static/cat.gif", _i: 6 },
+            class: _vm._$g(3, "c"),
+            attrs: { src: "/static/cat.gif", _i: 3 },
             on: {
               click: function($event) {
                 return _vm.$handleViewEvent($event)
               }
             }
-          })
+          }),
+          _c(
+            "v-uni-text",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm._$g(4, "v-show"),
+                  expression: "_$g(4,'v-show')"
+                }
+              ],
+              staticClass: _vm._$g(4, "sc"),
+              attrs: { _i: 4 }
+            },
+            [
+              _vm._v(_vm._$g(4, "t0")),
+              _c(
+                "v-uni-text",
+                { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
+                [_vm._v(":")]
+              ),
+              _vm._v(_vm._$g(4, "t0") + "."),
+              _c(
+                "v-uni-text",
+                { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
+                [_vm._v(_vm._$g(6, "t0"))]
+              )
+            ],
+            1
+          )
         ],
         1
       ),
@@ -357,7 +365,7 @@ exports = module.exports = __webpack_require__(/*! ./node_modules/css-loader/lib
 
 
 // module
-exports.push([module.i, "\n.button{\n\tborder: 1px solid #ccc;\n\tborder-radius: 5px;\n}\n.status_bar {\n      height: var(--status-bar-height);\n      width: 100%;\n}\n.title{\n\theight: 30px;\n\tcolor: #000;\n}\n.seconds{\n\tfont-size: 100rpx;\n\tcolor: #dbdb2a;\n}\n.all{\n\tposition: absolute;\n\twidth: 100%;\n\theight: 100%;\n\tz-index: 999;\n\tfont-size: 100px;\n\tbackground: #000;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n}\n#black{\n\tcolor: #000;\n}\n.time{\n\tcolor: #fff;\n\tbottom: 0;\n}\n.preView{\n\theight: 200px;\n\twidth: 100%;\n\tfont-size: 200rpx;\n\tbackground: #000;\n\tposition: relative;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-align: end;\n\t-webkit-align-items: flex-end;\n\t        align-items: flex-end;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n}\n.content {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\theight: 100%;\n\twidth: 100%;\n}\n.preLogo{\n\tposition: absolute;\n\tborder-radius: 50%;\n\ttop: 0;\n\tright: 0;\n\theight: 200rpx;\n\twidth: 200rpx;\n}\n.logo {\n\tposition: absolute;\n\tborder-radius: 50%;\n\ttop: 0;\n\tright: 0;\n\theight: 500rpx;\n\twidth: 500rpx;\n}\n.text-area {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n}\n.title {\n\tfont-size: 36rpx;\n\tcolor: #8f8f94;\n}\n", ""]);
+exports.push([module.i, "\n.button{\n\tborder: 1px solid #ccc;\n\tborder-radius: 5px;\n}\n.status_bar {\n      height: var(--status-bar-height);\n      width: 100%;\n}\n.title{\n\theight: 30px;\n\tcolor: #000;\n}\n.seconds{\n\tfont-size: 100rpx;\n\tcolor: #dbdb2a;\n}\n#black{\n\tcolor: #000;\n}\n.time{\n\tcolor: #fff;\n\tbottom: 0;\n}\n.all{\n\tposition: absolute;\n\twidth: 100%;\n\theight: 100%;\n\tz-index: 999;\n\tfont-size: 100px;\n\tbackground: #000;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-align: end;\n\t-webkit-align-items: flex-end;\n\t        align-items: flex-end;\n\t-webkit-justify-content: space-around;\n\t        justify-content: space-around;\n\tfont-size: 300rpx;\n}\n.preView{\n\theight: 200px;\n\twidth: 100%;\n\tfont-size: 200rpx;\n\tbackground: #000;\n\tposition: relative;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-align: end;\n\t-webkit-align-items: flex-end;\n\t        align-items: flex-end;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n}\n.content {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\theight: 100%;\n\twidth: 100%;\n}\n.preLogo{\n\tposition: absolute;\n\tborder-radius: 50%;\n\ttop: 0;\n\tright: 0;\n\theight: 100rpx;\n\twidth: 100rpx;\n\tz-index: 0;\n}\n.logo {\t\t\t\n\tposition: absolute;\n\ttop: 0;\n\tright: 5rpx;\n\tborder-radius: 50%;\n\theight: 150rpx;\n\twidth: 150rpx;\n\tborder: 1px dashed #fff;\n}\n.text-area {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n}\n.title {\n\tfont-size: 36rpx;\n\tcolor: #8f8f94;\n}\n", ""]);
 
 // exports
 

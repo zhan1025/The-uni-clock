@@ -8,16 +8,6 @@
 			}
 		}
 	],
-	"tabBar": {
-		"color": "#7A7E83",
-		"selectedColor": "#2581b3",
-		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		"list": [{
-				"pagePath": "pages/index/index",
-				"text": "Waiting for development"
-			}]
-	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "pure clock",

@@ -7,7 +7,8 @@
 			<image :class="pre?'preLogo':'logo'" src="/static/cat.gif" @click="noPre"></image>
 			<text class="time" v-show="hours">{{hours}}<text class="dot" >:</text>{{minutes}}.<text class="seconds">{{seconds}}</text></text>
 		</view>
-		<button type="primary" plain="true"  @click="all">全屏</button>
+		<button type="primary" plain="true"  @click="all">全屏显示</button>
+		
 	</view>
 </template>
 
@@ -65,13 +66,14 @@
 			time(){
 				let temp = null
 				this.timer = setInterval(()=>{
+						
 					temp = new Date()
 					this.seconds = this.pad(temp.getSeconds())
 					if(this.hours !== temp.getHours()){
 						this.hours = this.pad(temp.getHours())
 					}
 					if(this.minutes !== temp.getMinutes()){
-						this.minutes = this.pad(temp.getHours())
+						this.minutes = this.pad(temp.getMinutes())
 					}
 					
 					this.dot = !this.dot

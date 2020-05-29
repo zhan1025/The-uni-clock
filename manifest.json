@@ -2,7 +2,7 @@
     "name" : "Pure Clock",
     "appid" : "__UNI__A80FF57",
     "description" : "极简时钟",
-    "versionName" : "1.0.0",
+    "versionName" : "0.0.1(alpha)",
     "versionCode" : "100",
     "transformPx" : false,
     /* 5+App特有相关 */

@@ -2,13 +2,12 @@
 	<view class="content">
 		<view class="status_bar">
 		          <!-- 这里是状态栏 -->
-		      </view>
+		</view>
 		<view :class="pre?'preView':'all'">
 			<image :class="pre?'preLogo':'logo'" src="/static/cat.gif" @click="noPre"></image>
-			<text class="time" v-show="hours">{{hours}}<text class="dot" >:</text>{{minutes}}.<text class="seconds">{{seconds}}</text></text>
+			<text class="time" v-show="nowTime">{{ nowTime }}</text>
 		</view>
 		<button type="primary" plain="true"  @click="all">全屏显示</button>
-		
 	</view>
 </template>
 
@@ -26,12 +25,25 @@
 			}
 		},
 		onShow() {
-			this.time()
+			this.timer = setInterval(()=>{this.time();},999);
+			
+			const innerAudioContext = uni.createInnerAudioContext();
+			innerAudioContext.autoplay = true;
+			innerAudioContext.loop = true;
+			innerAudioContext.src = 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3';
+			innerAudioContext.onPlay(() => {
+			  console.log('开始播放');
+			});
+			innerAudioContext.onError((res) => {
+			  console.log(res.errMsg);
+			  console.log(res.errCode);
+			});
 		},
 		onHide() {
 			this.clear()
 		},
 		onLoad() {
+			
 		},
 		onPullDownRefresh() {
 		        setTimeout(function () {
@@ -39,11 +51,13 @@
 		        }, 1000);
 		    },
 		methods: {
+			//	取消全屏
 			noPre(){
 				this.pre = true
 				plus.navigator.setFullscreen(false);
 				plus.screen.unlockOrientation();
 			},
+			//	全屏
 			all(){	
 				uni.setKeepScreenOn({
 					success:(res)=>{console.log(res)},
@@ -53,33 +67,29 @@
 				plus.screen.lockOrientation("landscape");
 				this.pre = false
 			},
+			//	清除获取时间的定时器
 			clear(){
 				clearInterval(this.timer)
 			},
-			pad(params){
-				if(params<=9){
-					return '0'+params
-				} else{
-					return params
-				}
-			},
+			//	获取当前时间
 			time(){
-				let temp = null
-				this.timer = setInterval(()=>{
-						
-					temp = new Date()
-					this.seconds = this.pad(temp.getSeconds())
-					if(this.hours !== temp.getHours()){
-						this.hours = this.pad(temp.getHours())
-					}
-					if(this.minutes !== temp.getMinutes()){
-						this.minutes = this.pad(temp.getMinutes())
-					}
-					
-					this.dot = !this.dot
-				},999)
+				let temp = null;		
+					temp = new Date();
+					this.nowTime = temp.toTimeString().split(' ')[0];
+			},
+			//	定时启动震动与声音
+			vibrate(){
+				uni.vibrateLong({
+								    success: function () {
+								        console.log('success');
+								    },
+										complete: ()=>{
+											console.log('进来了');
+										}
+								});
 			}
-		}
+			
+			}
 	}
 </script>
 
@@ -87,7 +97,6 @@
 	.button{
 		border: 1px solid #ccc;
 		border-radius: 5px;
-	
 	}
 	 .status_bar {
 	      height: var(--status-bar-height);
@@ -97,16 +106,14 @@
 		height: 30px;
 		color: #000;
 	}
-	.seconds{
-		font-size: 100rpx;
-		color: #dbdb2a;
-	}
+	
 	#black{
 		color: #000;
 	}
 	.time{
 		color: #fff;
 		bottom: 0;
+		text-shadow: 2rpx 2rpx 4rpx #FFFFFF;
 	}
 	
 	.all{
@@ -124,7 +131,7 @@
 	.preView{
 		height: 200px;
 		width: 100%;
-		font-size: 200rpx;
+		font-size: 150rpx;
 		background: #000;
 		position: relative;
 		display: flex;

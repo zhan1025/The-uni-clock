@@ -6,6 +6,12 @@
 				"navigationBarTitleText": "pure clock",
 				"enablePullDownRefresh":true
 			}
+		},
+		{
+			"path": "pages/21Days/index",
+			"style": {
+				"navigationBarTitleText": "21 days plan"
+			}
 		}
 	],
 	"globalStyle": {
@@ -14,5 +20,36 @@
 		"navigationStyle":"custom",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#007AFF",
+		"borderStyle": "black",
+		"backgroundColor": "#fff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabBar/todo.png",
+				"selectedIconPath": "static/tabBar/todo_color.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/21Days/index",
+				"iconPath": "static/tabBar/todo.png",
+				"selectedIconPath": "static/tabBar/todo_color.png",
+				"text": "21 days plan"
+			}
+			// {
+			// 	"pagePath": "pages/tabBar/extUI/extUI",
+			// 	"iconPath": "static/tabBar/todo.png",
+			// 	"selectedIconPath": "static/tabBar/todo_color.png",
+			// 	"text": "扩展组件"
+			// }, 
+			// {
+			// 	"pagePath": "pages/tabBar/template/template",
+			// 	"iconPath": "static/template.png",
+			// 	"selectedIconPath": "static/templateHL.png",
+			// 	"text": "模板"
+			// }
+		]
 	}
 }

@@ -8,10 +8,12 @@
 			<text class="time" v-show="nowTime">{{ nowTime }}</text>
 		</view>
 		<button type="primary" plain="true"  @click="all">全屏显示</button>
+		<TODO/>
 	</view>
 </template>
 
 <script>
+	import TODO from "../../components/todo.vue";
 	export default {
 		data() {	
 			return {
@@ -23,6 +25,9 @@
 				dot:true,
 				pre:true
 			}
+		},
+		components:{
+			TODO
 		},
 		onShow() {
 			this.timer = setInterval(()=>{this.time();},999);

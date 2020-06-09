@@ -3,7 +3,7 @@
 		<view class="status_bar">
 		          <!-- 这里是状态栏 -->
 		</view>
-		<view :class="pre?'preView':'all'">
+		<view :class="pre?'preView':'all'" ref="pre">
 			<image :class="pre?'preLogo':'logo'" src="/static/cat.gif" @click="noPre"></image>
 			<text class="time" v-show="nowTime">{{ nowTime }}</text>
 		</view>
@@ -32,17 +32,17 @@
 		onShow() {
 			this.timer = setInterval(()=>{this.time();},999);
 			
-			const innerAudioContext = uni.createInnerAudioContext();
-			innerAudioContext.autoplay = true;
-			innerAudioContext.loop = true;
-			innerAudioContext.src = 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3';
-			innerAudioContext.onPlay(() => {
-			  console.log('开始播放');
-			});
-			innerAudioContext.onError((res) => {
-			  console.log(res.errMsg);
-			  console.log(res.errCode);
-			});
+			// const innerAudioContext = uni.createInnerAudioContext();
+			// innerAudioContext.autoplay = true;
+			// innerAudioContext.loop = true;
+			// innerAudioContext.src = 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3';
+			// innerAudioContext.onPlay(() => {
+			//   console.log('开始播放');
+			// });
+			// innerAudioContext.onError((res) => {
+			//   console.log(res.errMsg);
+			//   console.log(res.errCode);
+			// });
 		},
 		onHide() {
 			this.clear()
@@ -61,6 +61,12 @@
 				this.pre = true
 				plus.navigator.setFullscreen(false);
 				plus.screen.unlockOrientation();
+				uni.showTabBar({
+					animation:true,
+					success: ()=>{console.log('tabBar显示')},
+					fail:()=>{console.log('tabBar显示失败')},
+					complete:()=>{console.log('tabBar显示函数调用结束')}
+				})
 			},
 			//	全屏
 			all(){	
@@ -70,6 +76,12 @@
 				});
 				plus.navigator.setFullscreen(true);
 				plus.screen.lockOrientation("landscape");
+				uni.hideTabBar({
+					animation:true,
+					success: ()=>{console.log('tabBar隐藏')},
+					fail:()=>{console.log('tabBar隐藏失败')},
+					complete:()=>{console.log('tabBar隐藏函数调用结束')}
+				})
 				this.pre = false
 			},
 			//	清除获取时间的定时器

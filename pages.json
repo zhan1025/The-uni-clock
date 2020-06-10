@@ -10,7 +10,7 @@
 		{
 			"path": "pages/21Days/index",
 			"style": {
-				"navigationBarTitleText": "21 days plan"
+				"navigationBarTitleText": "21 Days Plan"
 			}
 		}
 	],
@@ -19,7 +19,8 @@
 		"navigationBarTitleText": "pure clock",
 		"navigationStyle":"custom",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"backgroundColorBottom": "#F4F5F6"
 	},
 	"tabBar": {
 		"color": "#7A7E83",

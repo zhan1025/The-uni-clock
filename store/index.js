@@ -5,9 +5,18 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
-		
+		planList:[],
 	},
 	mutations: {
+		setPlanList(data){
+					uni.setStorage({
+					    key: 'storage_key',
+					    data: 'hello',
+					    success: function () {
+					        console.log('success');
+					    }
+					});
+				},
 		login(state, provider) {
 			state.hasLogin = true;
 			state.loginProvider = provider;
@@ -35,9 +44,6 @@ const store = new Vuex.Store({
         }
     },
 	actions: {
-		console(){
-			console.log('vuex')
-		},
 		// lazy loading openid
 		getUserOpenId: async function ({
 			commit,

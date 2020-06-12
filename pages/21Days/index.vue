@@ -4,18 +4,17 @@
 		<uni-nav-bar leftIcon="back" leftText="首页" @clickLeft="back" border="false">
 			<view class="title"><text class="y_font">21</text> Days Plan</view>
 		</uni-nav-bar>
-		<uni-swipe-action class="plans">
-			<uni-swipe-action-item class="plan_item" :options="options" data-num="0" @click="onClick()" @change="change">
-				 <view class='cont'>SwipeAction 基础使用场景</view>
-			</uni-swipe-action-item>
-			<uni-swipe-action-item class="plan_item" :options="options" @click="onClick" @change="change">
-				 <view class='cont'>SwipeAction 基础使用场景</view>
-			</uni-swipe-action-item>
-			<uni-swipe-action-item class="plan_item" :options="options" @click="onClick" @change="change">
-				 <view class='cont'>SwipeAction 基础使用场景</view>
+		<uni-swipe-action class="plans" v-show="planList.length" >
+			<uni-swipe-action-item v-for="(item, index) in planList" 
+			:key="item.id" 
+			class="plan_item" 
+			:options="item.options"  
+			@click="onClick($event,index)" 
+			@change="change">
+				 <view class='cont'>{{item.content}}</view>
 			</uni-swipe-action-item>
 		</uni-swipe-action>
-		<view class="add_bar" @click="add"> + </view>
+		<view class="add_bar" @click="console"> + </view>
 	</view>
 </template>
 
@@ -34,17 +33,58 @@
 			return{
 				options:[
 				        {
-									text: '取消',
+									text: '编辑',
+									type: 1,
 									style: {
-											backgroundColor: '#007aff'
+											backgroundColor: '#169a0f'
 									}
-				        }, {
-				            text: '删除',
-				            style: {
-				                backgroundColor: '#dd524d'
-				            }
-				        }
-				      ]
+								},
+								{
+									text: '删除',
+									type: 0,
+									style: {
+										backgroundColor: 'rgb(255,58,49)'
+									}
+								}
+				      ],
+				planList:[
+					{
+							id: 2,
+							options: [{
+								text: '编辑',
+								type: 1,
+								style: {
+										backgroundColor: '#169a0f'
+								}
+							},
+							{
+								text: '删除',
+								type: 0,
+								style: {
+									backgroundColor: 'rgb(255,58,49)'
+								}
+							}],
+							content: 'item'
+						},
+						{
+							id: 3,
+							options: [{
+								text: '编辑',
+								type: 1,
+								style: {
+										backgroundColor: '#169a0f'
+								}
+							},
+							{
+								text: '删除',
+								type: 0,
+								style: {
+									backgroundColor: 'rgb(255,58,49)'
+								}
+							}],
+							content: 'item'
+						}
+				]
 			}
 		},
 		onShow() {
@@ -53,11 +93,27 @@
 		},
 		methods:{
 			...mapActions(['console']),
-			onClick(e){
-			      console.log('当前点击的是第'+e.index+'个按钮，点击内容是'+e.content.text)
+			onClick(e,index){
+			      // console.log('当前点击的是第'+e.index+'个按钮，点击内容是'+e.content.text)
+						console.dir(e)
+						if(!e.content.type){
+							uni.showModal({
+							title: '提示',
+							content: '是否删除',
+							success: (res) => {
+								if (res.confirm) {
+									this.planList.splice(index, 1)
+								} else if (res.cancel) {
+									console.log('用户点击取消');
+								}
+							}
+						});
+						}else{
+							// TODO:
+						}
 			    },
 			change(open){
-				console.log('当前开启状态：'+ open)
+				// console.log('当前开启状态：'+ open)
 			},
 			back(){
 				uni.switchTab({

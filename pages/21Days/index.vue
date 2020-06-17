@@ -14,12 +14,16 @@
 				 <view class='cont'>{{item.content}}</view>
 			</uni-swipe-action-item>
 		</uni-swipe-action>
-		<view class="add_bar" @click="console"> + </view>
+		<view class="add_bar" @click="add($event)" :id="add_active?'add_bar--active':''">
+			<view class="add_bar--wrap">
+				
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
-	import { mapActions } from 'vuex'
+	import { mapMutations } from 'vuex'
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniSwipeAction from '@/components/uni-swipe-action/uni-swipe-action.vue'
 	import uniSwipeActionItem from '@/components/uni-swipe-action-item/uni-swipe-action-item.vue'
@@ -31,6 +35,7 @@
 		},
 		data(){
 			return{
+				add_active: false,
 				options:[
 				        {
 									text: '编辑',
@@ -89,10 +94,13 @@
 		},
 		onShow() {
 			this.hidetabBar();
-			this.console();
 		},
 		methods:{
-			...mapActions(['console']),
+			...mapMutations(['setPlanList']),
+			//	添加plan
+			add(e){
+				this.add_active = !this.add_active
+			},
 			onClick(e,index){
 			      // console.log('当前点击的是第'+e.index+'个按钮，点击内容是'+e.content.text)
 						console.dir(e)
@@ -179,6 +187,19 @@
 			 font-weight: bolder;
 		 }
 	 }
+	 #add_bar--active{
+		 
+		 // 	display: block;
+			// position: absolute;
+			// bottom: 25rpx;
+			// z-index: -1;
+		 // 	width: 50rpx;
+		 // 	height: 150rpx;
+			// background: #007AFF;
+		 // 	border-radius: 50%;
+			transform: rotate(-135deg);
+		 	transition: height .2s ease-in-out;
+	 }
 	.add_bar{
 		width: 50rpx;
 		height: 50rpx;
@@ -187,12 +208,31 @@
 		justify-content: center;
 		align-items: center;
 		border: 1rpx solid #000;
+		background: #8bc3ff;
 		border-radius: 50%;
 		position: fixed;
 		right: 25rpx;
 		bottom: 100rpx;
-		&:hover{
-			box-shadow: 4px -3px 5px #000;
+		
+		&::before{
+			content: '+';
+			display:block;
+			position: absolute;
+			top: 44%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+		// &:hover{
+		// 	box-shadow: 4px -3px 5px #000;
+		// }
+		.add_bar--wrap{
+			display: none;
+			position: absolute;
+			z-index: -2;
+			width: 50rpx;
+			height: 150rpx;
+			border-radius: 50%;
+			transition: all .2s ease-in-out;
 		}
 	}
 </style>

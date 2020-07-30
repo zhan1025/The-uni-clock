@@ -27,11 +27,15 @@
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniSwipeAction from '@/components/uni-swipe-action/uni-swipe-action.vue'
 	import uniSwipeActionItem from '@/components/uni-swipe-action-item/uni-swipe-action-item.vue'
+	import uniSection from '@/components/uni-section/uni-section.vue'
+	import uniPopup from '@/components/uni-popup/uni-popup.vue'
 	export default {
 		components:{
 			uniNavBar,
 			uniSwipeAction,
-			uniSwipeActionItem
+			uniSwipeActionItem,
+			uniSection,
+			uniPopup
 		},
 		data(){
 			return{
@@ -143,7 +147,7 @@
 		.plans{
 			flex: 1;
 			overflow-y: scroll;
-			background: #dadada7d;
+			background: transparent;
 			.cont{
 				flex: 1;
 				height: 90rpx;

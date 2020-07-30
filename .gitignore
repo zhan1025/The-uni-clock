@@ -1,0 +1,6 @@
+/.gradle
+/.idea
+/unpackage
+build.gradle
+clock.iml
+local.properties

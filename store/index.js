@@ -6,6 +6,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 	state: {
 		planList:[],
+		size:['1920x1208','1366x768', '1024x768', '480x800']	
 	},
 	mutations: {
 		setPlanList(data){
@@ -71,7 +72,8 @@ const store = new Vuex.Store({
 				}
 			})
 		}
-	}
+	},
+	
 })
 
 export default store

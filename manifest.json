@@ -5,11 +5,17 @@
     "versionName" : "1.0.0(alpha)",
     "versionCode" : "100",
     "transformPx" : false,
+		"debug": true,
     /* 5+App特有相关 */
     "app-plus" : {
         "usingComponents" : true,
         "nvueCompiler" : "uni-app",
         "compilerVersion" : 3,
+        "safearea" : {
+            "bottom" : {
+                "offset" : "none"
+            }
+        },
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
@@ -50,7 +56,9 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {},
+            "sdkConfigs" : {
+							
+						},
             "icons" : {
                 "ios" : {
                     "iphone" : {
@@ -86,8 +94,12 @@
             "splashscreen" : {
                 "android" : {
                     "hdpi" : ""
-                }
+                },
+                "androidStyle" : "common"
             }
+        },
+        "uniStatistics" : {
+            "enable" : true
         }
     },
     /* 快应用特有相关 */
@@ -108,5 +120,12 @@
     },
     "mp-toutiao" : {
         "usingComponents" : true
+    },
+    "h5" : {
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        }
     }
 }

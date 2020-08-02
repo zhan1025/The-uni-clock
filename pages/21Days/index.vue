@@ -165,6 +165,7 @@
 	.status_bar {
 	     height: var(--status-bar-height);
 	     width: 100%;
+			 background: white;
 	 }
 	 /deep/.uni-navbar__header-container{
 		 display: flex;
